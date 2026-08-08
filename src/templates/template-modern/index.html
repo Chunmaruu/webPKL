@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{hero.judul}} — Website Resmi</title>
+  <meta name="description" content="{{profil.deskripsi}}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        {{#if profil.logo}}
+        <img src="{{profil.logo}}" alt="Logo" class="nav-logo">
+        {{/if}}
+        <span class="nav-title">{{hero.judul}}</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="beranda" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag">🏡 Website Resmi Desa</span>
+        <h1 class="hero-title">{{hero.judul}}</h1>
+        <p class="hero-subtitle">{{hero.subjudul}}</p>
+        <a href="#profil" class="hero-btn">Jelajahi <span>→</span></a>
+      </div>
+      <div class="hero-image">
+        {{#if hero.background}}
+        <img src="{{hero.background}}" alt="Desa">
+        {{else}}
+        <div class="hero-placeholder"></div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Profil -->
+  <section id="profil" class="section">
+    <div class="container">
+      <span class="section-tag">Tentang Kami</span>
+      <h2 class="section-title">Profil Desa</h2>
+      <div class="profil-card">
+        {{#if profil.logo}}
+        <img src="{{profil.logo}}" alt="Logo" class="profil-logo">
+        {{/if}}
+        <p class="profil-desc">{{profil.deskripsi}}</p>
+      </div>
+      <div class="cards-row">
+        {{#if profil.visi}}
+        <div class="info-card">
+          <div class="info-card-icon">🎯</div>
+          <h3>Visi</h3>
+          <p>{{profil.visi}}</p>
+        </div>
+        {{/if}}
+        {{#if profil.misi}}
+        <div class="info-card">
+          <div class="info-card-icon">📋</div>
+          <h3>Misi</h3>
+          <p class="misi-text">{{profil.misi}}</p>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  {{#if galeri.foto}}
+  <section id="galeri" class="section section-alt">
+    <div class="container">
+      <span class="section-tag">Dokumentasi</span>
+      <h2 class="section-title">Galeri Desa</h2>
+      <div class="galeri-grid">
+        {{#each galeri.foto}}
+        <div class="galeri-item">
+          <img src="{{this}}" alt="Foto Desa" loading="lazy">
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  {{/if}}
+
+  <!-- Kontak -->
+  <section id="kontak" class="section">
+    <div class="container">
+      <span class="section-tag">Hubungi Kami</span>
+      <h2 class="section-title">Kontak & Lokasi</h2>
+      <div class="kontak-grid">
+        <div class="kontak-cards">
+          {{#if kontak.alamat}}
+          <div class="kontak-card">
+            <span class="kontak-emoji">📍</span>
+            <h4>Alamat</h4>
+            <p>{{kontak.alamat}}</p>
+          </div>
+          {{/if}}
+          {{#if kontak.telepon}}
+          <div class="kontak-card">
+            <span class="kontak-emoji">📞</span>
+            <h4>Telepon</h4>
+            <p>{{kontak.telepon}}</p>
+          </div>
+          {{/if}}
+          {{#if kontak.email}}
+          <div class="kontak-card">
+            <span class="kontak-emoji">📧</span>
+            <h4>Email</h4>
+            <p>{{kontak.email}}</p>
+          </div>
+          {{/if}}
+        </div>
+        {{#if kontak.maps}}
+        <div class="kontak-map">
+          <iframe src="{{kontak.maps}}" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 {{hero.judul}}</p>
+      <p class="footer-sub">Dibuat dengan ❤️ untuk kemajuan desa Indonesia</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

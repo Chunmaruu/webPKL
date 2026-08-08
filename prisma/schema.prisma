@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  namaDesa  String   @map("nama_desa")
+  kecamatan String
+  kabupaten String
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN_DESA")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  websites WebsiteDesa[]
+
+  @@map("users")
+}
+
+model Template {
+  id           Int      @id @default(autoincrement())
+  namaTemplate String   @map("nama_template")
+  slug         String   @unique
+  deskripsi    String?  @db.Text
+  thumbnail    String?
+  schemaConfig Json     @map("schema_config")
+  htmlTemplate String?  @db.LongText @map("html_template")
+  cssTemplate  String?  @db.LongText @map("css_template")
+  jsTemplate   String?  @db.LongText @map("js_template")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  websites WebsiteDesa[]
+
+  @@map("templates")
+}
+
+model WebsiteDesa {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  templateId Int      @map("template_id")
+  dataKonten Json?    @map("data_konten")
+  status     String   @default("draft")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template Template @relation(fields: [templateId], references: [id])
+
+  mediaUploads MediaUpload[]
+  generateLogs GenerateLog[]
+
+  @@map("website_desa")
+}
+
+model MediaUpload {
+  id        Int      @id @default(autoincrement())
+  websiteId Int      @map("website_id")
+  urlFile   String   @map("url_file")
+  tipe      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  website WebsiteDesa @relation(fields: [websiteId], references: [id], onDelete: Cascade)
+
+  @@map("media_uploads")
+}
+
+model GenerateLog {
+  id        Int      @id @default(autoincrement())
+  websiteId Int      @map("website_id")
+  status    String   @default("pending")
+  zipUrl    String?  @map("zip_url")
+  fileSize  Int?     @map("file_size")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  website WebsiteDesa @relation(fields: [websiteId], references: [id], onDelete: Cascade)
+
+  @@map("generate_logs")
+}

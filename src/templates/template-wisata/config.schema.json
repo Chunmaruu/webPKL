@@ -1,0 +1,109 @@
+{
+  "name": "Klasik",
+  "description": "Desain klasik, formal, dan profesional. Cocok untuk website desa pemerintahan.",
+  "sections": {
+    "hero": {
+      "label": "Hero / Banner Utama",
+      "fields": {
+        "judul": {
+          "type": "text",
+          "label": "Judul Utama",
+          "placeholder": "Selamat Datang di Desa Sukamaju",
+          "tooltip": "Tulis judul utama yang tampil di banner hero. Biasanya nama desa atau sapaan selamat datang.",
+          "required": true
+        },
+        "subjudul": {
+          "type": "text",
+          "label": "Sub Judul",
+          "placeholder": "Kecamatan Ciamis, Kabupaten Pangandaran, Jawa Barat",
+          "tooltip": "Keterangan singkat di bawah judul, misalnya lokasi desa."
+        },
+        "background": {
+          "type": "image",
+          "label": "Gambar Background Hero",
+          "tooltip": "Upload foto pemandangan desa atau gedung balai desa. Ukuran optimal: 1920x800px."
+        }
+      }
+    },
+    "profil": {
+      "label": "Profil Desa",
+      "fields": {
+        "deskripsi": {
+          "type": "textarea",
+          "label": "Deskripsi Desa",
+          "placeholder": "Desa Sukamaju merupakan sebuah desa yang terletak di Kecamatan Ciamis, Kabupaten Pangandaran, Jawa Barat. Desa ini memiliki luas wilayah sekitar 500 hektar dengan jumlah penduduk kurang lebih 5.000 jiwa. Sebagian besar mata pencaharian warga adalah petani dan nelayan.",
+          "tooltip": "Tulis deskripsi umum tentang desa: lokasi, luas wilayah, jumlah penduduk, dan mata pencaharian utama.",
+          "required": true
+        },
+        "visi": {
+          "type": "textarea",
+          "label": "Visi Desa",
+          "placeholder": "Mewujudkan Desa Sukamaju yang maju, mandiri, dan sejahtera berbasis pertanian dan pariwisata berkelanjutan."
+        },
+        "misi": {
+          "type": "textarea",
+          "label": "Misi Desa",
+          "placeholder": "1. Meningkatkan kualitas sumber daya manusia melalui pendidikan dan pelatihan.\n2. Mengembangkan potensi pertanian dan perikanan.\n3. Membangun infrastruktur desa yang memadai.\n4. Meningkatkan pelayanan publik yang transparan dan akuntabel."
+        },
+        "logo": {
+          "type": "image",
+          "label": "Logo Desa",
+          "tooltip": "Upload logo resmi desa. Format PNG dengan background transparan lebih baik."
+        }
+      }
+    },
+    "galeri": {
+      "label": "Galeri Foto",
+      "fields": {
+        "foto": {
+          "type": "images",
+          "label": "Foto-foto Desa",
+          "tooltip": "Upload foto-foto desa, kegiatan, atau tempat wisata. Maksimal 8 foto.",
+          "maxCount": 8
+        }
+      }
+    },
+    "kontak": {
+      "label": "Kontak & Lokasi",
+      "fields": {
+        "alamat": {
+          "type": "textarea",
+          "label": "Alamat Lengkap",
+          "placeholder": "Jl. Raya Sukamaju No. 1, Kecamatan Ciamis, Kabupaten Pangandaran, Jawa Barat 46391",
+          "required": true
+        },
+        "telepon": {
+          "type": "text",
+          "label": "Nomor Telepon",
+          "placeholder": "(0265) 123456"
+        },
+        "email": {
+          "type": "text",
+          "label": "Email Desa",
+          "placeholder": "desa.sukamaju@gmail.com"
+        },
+        "maps": {
+          "type": "text",
+          "label": "Link Google Maps (Embed)",
+          "placeholder": "https://www.google.com/maps/embed?pb=...",
+          "tooltip": "Buka Google Maps → Cari lokasi desa → Klik 'Share' → 'Embed a map' → Copy link src dari iframe."
+        }
+      }
+    },
+    "warna": {
+      "label": "Skema Warna",
+      "fields": {
+        "primary": {
+          "type": "color",
+          "label": "Warna Utama",
+          "default": "#065f46"
+        },
+        "secondary": {
+          "type": "color",
+          "label": "Warna Sekunder",
+          "default": "#b45309"
+        }
+      }
+    }
+  }
+}

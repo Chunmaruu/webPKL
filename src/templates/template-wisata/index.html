@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{hero.judul}} — Website Resmi</title>
+  <meta name="description" content="{{profil.deskripsi}}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        {{#if profil.logo}}
+        <img src="{{profil.logo}}" alt="Logo" class="nav-logo">
+        {{/if}}
+        <span class="nav-title">{{hero.judul}}</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero with Parallax -->
+  <section id="beranda" class="hero" style="{{#if hero.background}}background-image: url('{{hero.background}}');{{/if}}">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge-row">
+        <span class="hero-badge">🌿 Desa Wisata</span>
+        <span class="hero-badge">🏡 Website Resmi</span>
+      </div>
+      <h1 class="hero-title">{{hero.judul}}</h1>
+      <p class="hero-subtitle">{{hero.subjudul}}</p>
+      <div class="hero-buttons">
+        <a href="#profil" class="hero-btn-primary">Jelajahi Desa ✨</a>
+        <a href="#galeri" class="hero-btn-outline">Lihat Galeri</a>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 50L60 45C120 40 240 30 360 33C480 37 600 53 720 58C840 63 960 58 1080 48C1200 38 1320 23 1380 15L1440 8V100H1380C1320 100 1200 100 1080 100C960 100 840 100 720 100C600 100 480 100 360 100C240 100 120 100 60 100H0V50Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Profil -->
+  <section id="profil" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🏘️ Tentang Kami</span>
+        <h2 class="section-title">Profil Desa</h2>
+      </div>
+      <div class="profil-split">
+        <div class="profil-left">
+          {{#if profil.logo}}
+          <img src="{{profil.logo}}" alt="Logo" class="profil-logo">
+          {{/if}}
+          <p class="profil-desc">{{profil.deskripsi}}</p>
+        </div>
+        <div class="profil-right">
+          {{#if profil.visi}}
+          <div class="visi-card">
+            <div class="visi-icon">🎯</div>
+            <h3>Visi</h3>
+            <p>{{profil.visi}}</p>
+          </div>
+          {{/if}}
+          {{#if profil.misi}}
+          <div class="visi-card misi">
+            <div class="visi-icon">📋</div>
+            <h3>Misi</h3>
+            <p class="misi-text">{{profil.misi}}</p>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  {{#if galeri.foto}}
+  <section id="galeri" class="section section-colored">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag light">📸 Dokumentasi</span>
+        <h2 class="section-title light">Galeri Desa</h2>
+      </div>
+      <div class="galeri-masonry">
+        {{#each galeri.foto}}
+        <div class="galeri-item">
+          <img src="{{this}}" alt="Foto Desa" loading="lazy">
+          <div class="galeri-hover">
+            <span>🔍</span>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  {{/if}}
+
+  <!-- Kontak -->
+  <section id="kontak" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📍 Hubungi Kami</span>
+        <h2 class="section-title">Kontak & Lokasi</h2>
+      </div>
+      <div class="kontak-flex">
+        <div class="kontak-info">
+          {{#if kontak.alamat}}
+          <div class="kontak-item">
+            <span class="kontak-icon">📍</span>
+            <div>
+              <h4>Alamat</h4>
+              <p>{{kontak.alamat}}</p>
+            </div>
+          </div>
+          {{/if}}
+          {{#if kontak.telepon}}
+          <div class="kontak-item">
+            <span class="kontak-icon">📞</span>
+            <div>
+              <h4>Telepon</h4>
+              <p>{{kontak.telepon}}</p>
+            </div>
+          </div>
+          {{/if}}
+          {{#if kontak.email}}
+          <div class="kontak-item">
+            <span class="kontak-icon">📧</span>
+            <div>
+              <h4>Email</h4>
+              <p>{{kontak.email}}</p>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+        {{#if kontak.maps}}
+        <div class="kontak-map">
+          <iframe src="{{kontak.maps}}" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 {{hero.judul}}</p>
+      <p class="footer-sub">Dibuat dengan ❤️ untuk kemajuan desa Indonesia</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
