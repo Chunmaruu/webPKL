@@ -3,6 +3,7 @@ import { getSession } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 import fs from "fs/promises";
 import path from "path";
+import { injectScrollReset } from "@/lib/scrollReset";
 
 /**
  * Simple template renderer (duplicate logic from generator for preview)
@@ -122,6 +123,7 @@ export async function GET(
     '<script src="script.js"></script>',
     `<script>${jsFile}</script>`
   );
+  renderedHtml = injectScrollReset(renderedHtml);
 
   return new NextResponse(renderedHtml, {
     headers: { "Content-Type": "text/html; charset=utf-8" },

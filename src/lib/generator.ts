@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { createWriteStream } from "fs";
 import { ZipArchive } from "archiver";
+import { injectScrollReset } from "./scrollReset";
 
 interface GenerateOptions {
   templateSlug: string;
@@ -146,6 +147,9 @@ export async function generateWebsite(
     /\/uploads\/\d+\//g,
     "images/"
   );
+
+  // Selalu kembali ke atas saat halaman di-refresh
+  renderedHtml = injectScrollReset(renderedHtml);
 
   // Prepare output directory
   const timestamp = Date.now();
